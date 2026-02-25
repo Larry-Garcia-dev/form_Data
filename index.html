@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Modelos AI | Panel de Cliente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main id="screen-login" class="screen-container active">
+        <div class="card">
+            <div class="card-header">
+                <h1>Acceso de Cliente</h1>
+                <p>Ingresa para gestionar tus proyectos</p>
+            </div>
+            <form id="form-login" class="form-group">
+                <div class="input-group">
+                    <label>ID de Cliente</label>
+                    <input type="text" id="login-id" required>
+                </div>
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <p id="login-error" class="error-message hidden"></p>
+                <button type="submit" class="btn-primary">Ingresar al Panel</button>
+            </form>
+            <div class="card-footer">
+                <button type="button" id="btn-show-register" class="btn-text">Soy usuario nuevo</button>
+            </div>
+        </div>
+    </main>
+
+    <main id="screen-register" class="screen-container hidden">
+        <div class="card">
+            <div class="card-header">
+                <h1>Crear Cuenta</h1>
+            </div>
+            <form id="form-register" class="form-group">
+                <div class="input-group"><label>Nombre o Empresa</label><input type="text" id="reg-name" required></div>
+                <div class="input-group"><label>Crea tu ID</label><input type="text" id="reg-id" required></div>
+                <div class="input-group"><label>Crea una Contraseña</label><input type="password" id="reg-password" required></div>
+                <p id="register-error" class="error-message hidden"></p>
+                <button type="submit" class="btn-primary">Registrarme y Continuar</button>
+            </form>
+            <div class="card-footer">
+                <button type="button" id="btn-show-login" class="btn-text">Volver al Login</button>
+            </div>
+        </div>
+    </main>
+
+    <main id="screen-dashboard" class="dashboard-container hidden">
+        <header class="sticky-header">
+            <div class="user-info">
+                <h2>Hola, <span id="display-user-name">Usuario</span></h2>
+            </div>
+            <div class="photo-counter">
+                <h3>Fotos Restantes por Asignar</h3>
+                <span id="global-photo-balance" class="balance-number">0</span>
+            </div>
+        </header>
+
+        <section id="config-section" class="config-section">
+            <h2>Configuración del Proyecto</h2>
+            <div class="input-group">
+                <label>¿Cuántas fotos realizaremos en total en este pedido?</label>
+                <input type="number" id="project-total-photos" min="1" required>
+            </div>
+
+            <div id="new-user-config" class="input-group hidden">
+                <label>¿Cuántas modelos deseas registrar y crear hoy?</label>
+                <input type="number" id="models-count" min="1" max="20">
+                <button type="button" id="btn-generate-forms" class="btn-secondary">Comenzar a llenar modelos</button>
+            </div>
+
+            <div id="recurring-user-config" class="input-group hidden">
+                <label>¿Para qué modelo deseas crear fotos hoy?</label>
+                <select id="recurring-model-select">
+                    <option value="" disabled selected>Selecciona una modelo...</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="wizard-container" class="wizard-container hidden">
+            <div class="wizard-header">
+                <h3 id="wizard-title">Modelo 1 de X</h3>
+            </div>
+            
+            <div id="wizard-content" class="wizard-content">
+                </div>
+
+            <div class="wizard-footer">
+                <button type="button" id="btn-next-step" class="btn-primary">Siguiente / Guardar Modelo</button>
+            </div>
+        </section>
+
+        <section id="submit-section" class="submit-section hidden">
+            <div class="card" style="text-align: center; margin: 0 auto;">
+                <h2>¡Todos los datos están listos!</h2>
+                <p>Por favor verifica que todo esté correcto antes de enviar.</p>
+                <button type="button" id="btn-submit-project" class="btn-success" style="margin-top: 20px;">Enviar Proyecto a n8n</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="global-loader" class="loader-overlay hidden">
+        <div class="spinner"></div><p id="loader-text">Procesando...</p>
+    </div>
+
+    <script src="state.js"></script>
+    <script src="login.js"></script>
+    <script src="register.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

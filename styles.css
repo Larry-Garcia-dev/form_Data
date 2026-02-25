@@ -1,0 +1,93 @@
+/* Variables globales (Dark Mode Moderno) */
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --accent: #6366f1; /* Indigo / Morado azulado */
+    --accent-hover: #4f46e5;
+    --success: #10b981;
+    --error: #ef4444;
+    --border: #333333;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+
+/* Utilidades */
+.hidden { display: none !important; }
+.active { display: block; }
+.error-message { color: var(--error); font-size: 0.85rem; margin-top: -10px; margin-bottom: 10px; }
+
+/* Contenedores de Pantalla */
+.screen-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.dashboard-container { max-width: 800px; margin: 0 auto; padding-bottom: 100px; }
+
+/* Tarjetas (Login / Registro) */
+.card { background: var(--card-bg); padding: 30px; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid var(--border); }
+.card-header h1 { font-size: 1.5rem; margin-bottom: 5px; }
+.card-header p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+.card-footer { text-align: center; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px; }
+
+/* Formularios */
+.form-group { display: flex; flex-direction: column; gap: 15px; }
+.input-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 15px; }
+.input-group label { font-size: 0.9rem; font-weight: 500; }
+.input-group small { color: var(--text-muted); font-size: 0.8rem; }
+input, select, textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #2a2a2a; color: white; outline: none; transition: border 0.3s; }
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+
+/* Botones */
+button { cursor: pointer; padding: 12px; border-radius: 8px; font-weight: bold; border: none; transition: all 0.2s; width: 100%; }
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-secondary { background: #333; color: white; border: 1px solid var(--border); }
+.btn-secondary:hover { background: #444; }
+.btn-success { background: var(--success); color: white; }
+.btn-success:disabled { background: #2a2a2a; color: var(--text-muted); cursor: not-allowed; }
+.btn-text { background: transparent; color: var(--accent); font-weight: normal; }
+.btn-text:hover { text-decoration: underline; }
+
+/* Dashboard & Sticky Header */
+.sticky-header { position: sticky; top: 0; background: rgba(30, 30, 30, 0.95); backdrop-filter: blur(5px); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); z-index: 100; border-radius: 0 0 12px 12px; margin-bottom: 20px; }
+.user-info h2 { font-size: 1.2rem; }
+.user-info p { color: var(--text-muted); font-size: 0.85rem; }
+.photo-counter { text-align: right; }
+.balance-number { font-size: 1.5rem; font-weight: bold; color: var(--accent); }
+
+.config-section { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
+.config-section h2 { margin-bottom: 15px; font-size: 1.2rem; }
+
+/* Acordeones Dinámicos */
+.accordion { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 15px; overflow: hidden; }
+.accordion-header { background: #252525; padding: 15px; cursor: pointer; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+.accordion-content { padding: 20px; display: none; }
+.accordion-content.active { display: block; }
+.accordion-header:hover { background: #2a2a2a; }
+
+/* Subida de Archivos y Grid */
+.file-upload-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 15px; }
+.file-upload-box { border: 2px dashed var(--border); border-radius: 8px; padding: 20px; text-align: center; }
+@media (min-width: 600px) { .file-upload-grid { grid-template-columns: 1fr 1fr; } }
+.thumbnail-preview { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
+.thumbnail-preview img { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); }
+
+/* Loader Global */
+.loader-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.spinner { border: 4px solid rgba(255,255,255,0.1); border-left-color: var(--accent); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 15px; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* --- NUEVOS ESTILOS PARA EL WIZARD Y GOOGLE DRIVE --- */
+
+.wizard-container { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 20px; }
+.wizard-header { background: #252525; padding: 15px 20px; border-bottom: 1px solid var(--border); text-align: center; }
+.wizard-content { padding: 20px; }
+.wizard-footer { padding: 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; }
+
+/* Caja de Instrucciones Importantes */
+.instructions-box { background: rgba(99, 102, 241, 0.1); border-left: 4px solid var(--accent); padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+.instructions-box h4 { color: var(--accent); margin-bottom: 10px; }
+.instructions-box p, .instructions-box ul { font-size: 0.9rem; color: #ddd; margin-bottom: 8px; }
+.instructions-box ul { margin-left: 20px; }
+.highlight-email { font-weight: bold; color: white; background: #333; padding: 2px 6px; border-radius: 4px; }
